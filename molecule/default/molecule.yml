@@ -1,0 +1,20 @@
+---
+role_name_check: 1
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: centos_stream8
+    image: quay.io/centos/centos:stream8
+    pre_build_image: true
+  - name: centos7
+    image: quay.io/centos/centos:centos7
+    pre_build_image: true
+  - name: ubuntu20
+    image: mpaivabarbosa/molecule-systemd-ubuntu:20.04
+    pre_build_image: true        
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

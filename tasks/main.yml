@@ -12,11 +12,13 @@
   until: get_vector is succeeded
 - name: Create vector home dir
   become: true
+  become_method: su
   ansible.builtin.file:
     state: directory
     path: "{{ vector_home }}"
 - name: Extract vector to home dir
   become: true
+  become_method: su
   ansible.builtin.unarchive:
     copy: false
     src: "/tmp/vector-{{ vector_version }}-x86_64-unknown-linux-musl.tar.gz"
@@ -25,6 +27,7 @@
     creates: "{{ vector_home }}/bin/vector"
 - name: Set environment Vector
   become: true
+  become_method: su
   ansible.builtin.template:
     src: templates/vector.sh.j2
     dest: /etc/profile.d/vector.sh
