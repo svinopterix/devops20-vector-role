@@ -3,6 +3,10 @@ Vector
 
 Инсталляция Vector
 
+Тэги:
+ansible-8.5-molecule - добавлены сценарии тестирования molecule
+ansible-8.5-tox - добавлены сценарии тестирования tox, сокращённый сценарий тестирования molecule с драйвером podman
+
 Requirements
 ------------
 
