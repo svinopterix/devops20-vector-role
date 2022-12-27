@@ -1,0 +1,26 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Get vector binary
+    ansible.builtin.stat:
+      path: "/opt/vector/bin/vector"
+    register: stat_binary
+
+  - name: Get config file
+    ansible.builtin.stat:
+      path: /etc/profile.d/vector.sh
+    register: stat_config
+
+  - name: Check binary exists
+    ansible.builtin.assert:
+     that: stat_binary.stat.islnk is defined and stat_binary.stat.islnk == False
+
+  - name: Check config exists
+    ansible.builtin.assert:
+     that: stat_config.stat.islnk is defined and stat_config.stat.islnk == False
+
+  

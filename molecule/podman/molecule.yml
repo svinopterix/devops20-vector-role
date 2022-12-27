@@ -1,0 +1,14 @@
+---
+role_name_check: 1
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: centos_stream8
+    image: quay.io/centos/centos:stream8
+    pre_build_image: true 
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
